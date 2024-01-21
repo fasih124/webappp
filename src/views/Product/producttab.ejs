@@ -1,0 +1,84 @@
+<%-include("../Home/header")-%>
+
+
+<div class="flex ">
+  <%-include("../Home/sidebar")-%>
+    <!-- main star -->
+    <main class="bg-custom4-700 w-11/12  bg-Pattren2 ">
+      <div id="Dashboard" class=" w-full h-full   overflow-hidden relative ">
+        <div class="overlay bg-custom1-700  bg-opacity-70 p-4 w-full h-full  overflow-y-scroll absolute ">
+
+          <!--=============================================== Select product ======================================-->
+          <div class="Selectproduct ">
+            <div class="newproduct">
+              <h2 class="text-3xl uppercase text-custom4-400  mb-3 font-bold tracking-widest ">Products
+                Detail</h2>
+              <h3 class="text-xl text-custom4-400  mb-4 font-medium ">Add New Product</h3>
+              <div onclick="window.location.href = '/Product/producttabAdd'"
+                class="mb-12 bg-custom1-500 hover:bg-custom3-400 border-2 border-white cursor-pointer py-10 px-5 w-44 rounded-lg text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" class="mx-auto w-8 h-8">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M6 6.878V6a2.25 2.25 0 0 1 2.25-2.25h7.5A2.25 2.25 0 0 1 18 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 0 0 4.5 9v.878m13.5-3A2.25 2.25 0 0 1 19.5 9v.878m0 0a2.246 2.246 0 0 0-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0 1 21 12v6a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 18v-6c0-.98.626-1.813 1.5-2.122" />
+                </svg>
+
+                <p class="mt-2 text-custom4-300 font-bold ">New Product</p>
+              </div>
+              <!-- old product -->
+              <div class="oldcustomer">
+                <h3 class="text-xl text-custom4-400  mb-6 font-medium ">Manage Product</h3>
+                <!-- grid -->
+                <div class="mb-10 grid grid-cols-1 gap-x-2 gap-y-3 justify-items-stretch">
+                  <div class="  border-white  flex items-center  p-2 rounded-lg justify-between">
+                    <div class="flex gap-x-4 p-2">
+                      <p  class="w-6 h-6"></p>
+                      <p class=" text-custom4-100 font-bold">Product</p>
+                    </div>
+                    <p class=" text-custom4-100 font-bold">Catagory</p>
+                    <p class=" text-custom4-100 font-bold">Price</p>
+                    <p class=" text-custom4-100 font-bold">Edit/Delete</p>
+                  </div>
+                  <hr>
+                  <!-- dynamic data rendering -->
+                  
+                  <% if(data.length===0){ %>
+                    <p class="text-custom4-300 font-bold ">No Product Found</p>
+                  <%}else{ %>
+                    <% for(let i=0;i<data.length;i++){  %>
+                      <!--single product  start  -->
+                      <div class=" bg-custom1-500 border-2 border-white  flex items-center  p-2 rounded-lg justify-between">
+                        <div class="flex gap-x-4">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                              d="m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
+                          </svg>
+    
+                          <p class=" text-custom4-300 font-bold"><%=data[i].Product_Name%></p>
+    
+                        </div>
+                        <p class=" text-custom4-300 font-bold"><%=data[i].Category%></p>
+                        <p class=" text-custom4-300 font-bold"><%=data[i].Price%></p>
+                        <div onclick="window.location.href='/Product/<%=data[i].Product_ID+50%>'" class="rounded-full bg-custom3-600 hover:bg-custom3-700 cursor-pointer py-2 px-3 mr-4">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                          </svg>
+  
+                        </div>
+                      </div>
+                     <!--single customer end start  -->
+                        <% }%>
+                      <% }%>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </main>
+    <!-- main star -->
+  </div>
+  <!-- ======================================================================================================= -->
+  <%-include("../Home/footer")-%>
+  
+  

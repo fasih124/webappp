@@ -1,0 +1,77 @@
+<%-include("../Home/header")-%>
+
+
+  <div class="flex ">
+    <%-include("../Home/sidebar")-%>
+      <!-- main star -->
+      <main class="bg-custom4-700 w-11/12  bg-Pattren2 ">
+        <div id="Dashboard" class=" w-full h-full   overflow-hidden relative ">
+          <div class="overlay bg-custom1-700  bg-opacity-70 p-4 w-full h-full  overflow-y-auto absolute ">
+
+            <!--=============================================== main ======================================-->
+
+            <h1 class="text-3xl font-bold mb-4">Create Invoice</h1>
+            <div class=" p-4  w-11/12">
+              <form action="#" method="post" class="p-4 flex gap-x-8 justify-evenly">
+                <div>
+                  <fieldset class="font-medium">
+                    <legend class="font-semibold text-xl mb-6 text-custom3-500">Customer</legend>
+                    <label for="customer" class="font-medium inline-block w-32 ">Select Customer:</label>
+                    <select class="text-black mb-4 border p-2 rounded w-60 " name="customer" id="customer">
+                      <option value="id">Option 1</option>
+                      <option value="id">Option 2</option>
+                      <option value="id">Option 3</option>
+                    </select>
+                  </fieldset>
+
+                  <fieldset class="font-medium mb-12">
+                    <legend class="font-semibold text-xl mb-6 text-custom3-500">Product</legend>
+                    <label for="options" class="font-medium inline-block w-32">Select Product:</label>
+                    <select class="text-black border p-2 rounded mb-4  w-60" name="options" id="options">
+                      <option value="option1">Option 1</option>
+                      <option value="option2">Option 2</option>
+                      <option value="option3">Option 3</option>
+                    </select>
+                    <br>
+                    <label for="quantity" class="font-medium inline-block w-32">Quantity:</label>
+                    <input type="number" name="quantity" id="quantity" class="text-black mb-4 border p-2 rounded  w-60"
+                      placeholder="Quantity">
+                    <br>
+                    <label for="price" class="font-medium inline-block w-32">Price:</label>
+                    <input type="number" name="price" id="price" class=" text-black mb-4 border p-2 rounded  w-60"
+                      placeholder="RS 0">
+                    <br>
+                    <label for="subtotal" class=" inline-block w-32">Sub-Total:</label>
+                    <input type="number" name="subtotal" id="subtotal" class=" text-black mb-4 border p-2 rounded  w-60">
+                  </fieldset>
+                </div>
+                <div>
+                  <fieldset class="font-medium mb-12">
+                    <legend class="font-semibold text-xl mb-6 pt-4 text-custom3-500">Invoice</legend>
+                    <label for="total" class="font-medium inline-block w-32">Total: </label>
+                    <input type="number" name="total" id="total" class="border p-2 w-60 text-black mb-4 rounded">
+                    <br>
+                    <label for="Discount" class="font-medium inline-block w-32">Discount:</label>
+                    <input type="number" name="Discount" id="Discount" class="border p-2 w-60 text-black mb-4 rounded">
+                    <br>
+                    <label for="nettotal" class="font-medium inline-block w-32">Net-Total:</label>
+                    <input type="number" name="nettotal" id="nettotal" class="border p-2 w-60 text-black mb-4 rounded">
+                  </fieldset>
+                  <button class="bg-custom1-500 hover:bg-custom3-400 mx-4 text-white font-bold py-2 px-16 rounded">
+                    Update
+                  </button>
+                  <button type="button" onclick="window.location.href='/Invoice'" class="bg-custom1-500 hover:bg-custom3-400  text-white font-bold py-2 px-16 rounded">
+                    Delete
+                  </button>
+                  <button type="button" onclick="window.location.href='/Invoice'" class="bg-custom1-500 hover:bg-custom3-400  text-white font-bold py-2 px-16 rounded">
+                    Back
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+      </main>
+      <!-- main star -->
+  </div>
+  <!-- ======================================================================================================= -->
+  <%-include("../Home/footer")-%>

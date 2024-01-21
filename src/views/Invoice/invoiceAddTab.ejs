@@ -1,0 +1,103 @@
+<%-include("../Home/header")-%>
+
+
+  <div class="flex ">
+    <%-include("../Home/sidebar")-%>
+      <!-- main star -->
+      <main class="bg-custom4-700 w-11/12  bg-Pattren2 ">
+        <div id="Dashboard" class=" w-full h-full   overflow-hidden relative ">
+          <div class="overlay bg-custom1-700  bg-opacity-70 p-4 w-full h-full  overflow-y-scroll absolute ">
+
+            <!--=============================================== main ======================================-->
+
+            <h1 class="text-3xl font-bold mb-4">Create Invoice</h1>
+            <div class=" p-4  w-11/12">
+              <form action="#" method="post" class="p-4 ">
+                <div>
+                  <fieldset class="font-medium">
+                    <legend class="font-semibold text-xl mb-6 text-custom3-500">Customer</legend>
+                    <label for="customer" class="font-medium inline-block w-32 ">Select Customer:</label>
+                    <select class="text-black mb-4 border p-2 rounded w-60 " name="customer" id="customer">
+                      <option value="id">Option 1</option>
+                      <option value="id">Option 2</option>
+                      <option value="id">Option 3</option>
+                    </select>
+                  </fieldset>
+
+                  <fieldset class="font-medium mb-8">
+                    <legend class="font-semibold text-xl mb-6 text-custom3-500">Product</legend>
+                    <div class="flex justify-evenly align-center items-center flex-wrap">
+                      <label for="options" class="font-medium inline-block w-32">Select Product:</label>
+                      <select class="text-black border p-2 rounded mb-4  w-60" name="options" id="options"
+                        onchange="updatePrice()">
+                        <option value="" disabled selected>Select a product</option>
+                        <% for(let i=0;i<product.length;i++){ %>
+                          <!-- ProductsName[i]id -->
+                          <option value="<%=product[i].Product_ID%>" data-price="<%=product[i].Price%>">
+                            <%=product[i].Product_Name%>
+                          </option>
+                          <% }%>
+
+                      </select>
+
+                      <label for="quantity" class="font-medium inline-block w-16 ">Quantity:</label>
+                      <input type="number" name="quantity" id="quantity" class=" text-black mb-4 border p-2 rounded  w-32" value="1" onchange="updateSubtotal()  "  min="1">
+
+                      <label for="price" class="font-medium inline-block w-12">Price:</label>
+                      <input type="number" name="price" disabled id="price" class=" text-black mb-4 border p-2 rounded  w-32" value="0">
+                      <label for="subtotal" class=" inline-block w-20">Sub-Total:</label>
+                      <input type="number" name="subtotal" disabled id="subtotal" class=" text-black mb-4 border p-2 rounded  w-32" value="0">
+                    </div>
+                  </fieldset>
+                </div>
+                <div>
+                  <fieldset class="font-medium mb-12">
+                    <legend class="font-semibold text-xl mb-6 pt-4 text-custom3-500">Invoice</legend>
+                    <label for="total" class="font-medium inline-block w-32">Total: </label>
+                    <input type="number" name="total" id="total" class="border p-2 w-60 text-black mb-4 rounded "
+                      placeholder="RS 0">
+                    <br>
+                    <label for="Discount" class="font-medium inline-block w-32">Discount:</label>
+                    <input type="number" name="Discount" id="Discount" class="border p-2 w-60 text-black mb-4 rounded "
+                      placeholder="RS 0">
+                    <br>
+                    <label for="nettotal" class="font-medium inline-block w-32">Net-Total:</label>
+                    <input type="number" name="nettotal" id="nettotal" class="border p-2 w-60 text-black mb-4 rounded "
+                      placeholder="RS 0">
+                  </fieldset>
+                  <button class="bg-custom1-500 hover:bg-custom3-400 mx-4 text-white font-bold py-2 px-16 rounded">
+                    Add
+                  </button>
+                  <button type="button" onclick="window.location.href='/Invoice'"
+                    class="bg-custom1-500 hover:bg-custom3-400  text-white font-bold py-2 px-16 rounded">
+                    Back
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+      </main>
+      <script>
+       function updatePrice() {
+    var select = document.getElementById("options");
+    var selectedOption = select.options[select.selectedIndex];
+    var price = selectedOption.getAttribute('data-price');
+    document.getElementById("price").value = parseInt(price);
+    updateSubtotal();
+  }
+
+  function updateSubtotal() {
+    var price = parseInt(document.getElementById("price").value);
+    var quantity = parseInt(document.getElementById("quantity").value);
+    if (quantity < 0) {
+    quantity = 1;
+    document.getElementById("quantity").value = 1;
+  }
+  document.getElementById("subtotal").value = price * quantity;
+  }
+
+      </script>
+      <!-- main star -->
+  </div>
+  <!-- ======================================================================================================= -->
+  <%-include("../Home/footer")-%>

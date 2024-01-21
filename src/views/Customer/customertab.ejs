@@ -1,0 +1,62 @@
+<%-include("../Home/header")-%>
+
+
+<div class="flex ">
+  <%-include("../Home/sidebar")-%>
+  <!-- main star -->
+  <main class="bg-custom4-700 w-11/12  bg-Pattren2 ">
+    <div id="Customer" class=" w-full h-full   overflow-hidden relative ">
+      <div class="overlay bg-custom1-700  bg-opacity-70 p-4 w-full h-full  overflow-y-scroll absolute ">
+
+        <div class="Selectcustomer customerTab " id="customerTab1">
+          <div>
+            <h2 class="text-3xl uppercase text-custom4-400  mb-3 font-bold tracking-widest ">Customer
+              Detail</h2>
+            <h3 class="text-xl text-custom4-600  mb-4 font-medium ">Add New Customer</h3>
+            <!-- new customer box -->
+            <a href="/Customer/add"
+              class=" block mb-12 bg-custom1-500  ml-16 hover:bg-custom1-400 border-2 border-white cursor-pointer py-10 px-5 w-44 rounded-lg text-center">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8"
+                stroke="currentColor" class="mx-auto w-8 h-8">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
+              </svg>
+              <p class="mt-2 text-custom4-300 font-bold ">New Customer</p>
+            </a>
+            <!-- View customer --> 
+            <div class="Viewcustomer">
+              <h3 class="text-xl text-custom4-600  mb-6 font-medium ">View Customer</h3>
+              <!-- grid -->
+              <div class="mb-10 grid grid-cols-4 gap-x-2 gap-y-6 justify-items-center">
+                <% if(data.length===0){ %>
+                  <p class="text-custom4-300 font-bold ">No Customer Found</p>
+                <%}else{ %>
+                  <% for(let i=0;i<data.length;i++){  %>
+                <!--single customer button start  -->
+                <div onclick="window.location.href='/Customer/Detail/<%=data[i].Customer_ID+50%>'"
+                  class=" bg-custom1-500 border-2 border-white hover:bg-custom1-400  cursor-pointer py-10 px-8 w-44 rounded-lg text-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-8 h-8 mx-auto">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                  </svg>
+                  <div>
+                    <p class=" text-custom4-300 font-bold"><%=data[i].customer_Name%></p>
+                  </div>
+                </div>
+               <!--single customer button start  -->
+                    <!-- <div onclick="window.location.href='/Customer/Detail/'"></div> -->
+                  <% }%>
+                <% }%>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <!-- main star -->
+</div>
+<!-- ======================================================================================================= -->
+<%-include("../Home/footer")-%>
+

@@ -1,0 +1,96 @@
+<%-include("../Home/header")-%>
+
+
+<div class="flex ">
+  <%-include("../Home/sidebar")-%>
+
+    <!-- main star -->
+    <main class="bg-custom4-700 w-11/12  bg-Pattren2 ">
+      <div id="Dashboard" class=" w-full h-full   overflow-hidden relative ">
+        <div class="overlay bg-custom1-700  bg-opacity-70 p-4 w-full h-full  overflow-y-scroll absolute ">
+
+          <!--================================================ Add product ====================================================-->
+          <div class="Addproduct ">
+            <div class="min-h-screen p-6  flex flex-col justify-start bg-Pattern1">
+              <div class="container max-w-screen-lg mx-auto">
+                <div>
+                  <div class=" rounded   mb-6 ">
+                    <div class="grid gap-2 gap-y-2 text-sm grid-cols-1 ">
+                      <div class="text-white mb-8">
+                        <p class="font-medium text-lg">Enter Product Detail</p>
+                        <p>Kindly provide all the necessary details in the form below to
+                          facilitate the addition of a new Product to our system. Your
+                          accurate
+                          and complete information ensures a seamless onboarding process and
+                          helps us Provide better service.</p>
+                      </div>
+                      <form action="/Product" method="post">
+                        <div class="md:col-span-3">
+                          <label for=" text-xl">Product Name <span
+                              class="text-red-500 text-base font-semibold">*</span></label>
+                          <input type="text" name="product_Name" id="productName"
+                            class="h-10 border mt-1 rounded px-4 w-full text-black" value="" />
+                        </div>
+
+                        <div class="md:col-span-2">
+                          <label for="category">Category</label>
+                          <input type="text" name="Category" id="category"
+                            class="h-10 border mt-1 rounded px-4 w-full text-black" value="" placeholder="" />
+                        </div>
+
+                        <div class="md:col-span-1">
+                          <label for="price">Price <span class="text-red-500 text-base font-semibold">*</span></label>
+                          <input type="text" name="product_Price" id="price"
+                            class="h-10 border mt-1 rounded px-4 w-full text-black" value="" placeholder="" />
+                        </div>
+
+                        <div class="md:col-span-2">
+                          <label for="stockAmount">Stock Amount</label>
+                          <div class="h-10 bg-gray-50 flex border border-gray-200 rounded items-center mt-1">
+                            <input name="product_Quantity" id="stockAmount" placeholder=""
+                              class="px-4 appearance-none outline-none text-gray-800 w-full bg-transparent" value="" />
+                          </div>
+
+                        </div>
+
+                        <div class="md:col-span-4">
+                          <label for="description">Description</label>
+                          <input type="text" name="product_Description" id="description"
+                            class="h-10 border mt-1 rounded px-4 w-full text-black bg-gray-50" value=""
+                            placeholder="" />
+                        </div>
+                        <p>Please ensure to fill in all required information marked with a red
+                          asterisk (<span
+                          class="text-red-500 text-base font-semibold">*</span>).</p>
+
+                        <div class="md:col-span-5 text-right mt-5">
+                          <div class="inline-flex items-end">
+                            <button
+                              class="bg-custom3-500 hover:bg-custom3-700 text-white font-bold py-2 px-4 rounded mt-4">Add
+                              Product</button>
+                          </div>
+                          <div class="inline-flex items-end">
+                            <button type="button"
+                              onclick="window.location.href = '/Product'"
+                              class="bg-custom2-500 hover:bg-custom2-700 text-white font-bold py-2 px-4 rounded mt-4">
+                              Back</button>
+                          </div>
+                        </div>
+
+                    </div>
+                  </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+
+
+          </div>
+        </div>
+    </main>
+    <!-- main star -->
+  </div>
+  <!-- ======================================================================================================= -->
+  <%-include("../Home/footer")-%>
+  

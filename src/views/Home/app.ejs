@@ -1,0 +1,60 @@
+<%-include("header")-%>
+  <!-- ======================================================================================================= -->
+  <div class="flex ">
+    <%-include("sidebar")-%>
+      <!-- main star -->
+      <main class="bg-custom4-700 w-11/12  bg-Pattren2 ">
+        <div id="Dashboard" class=" w-full h-full   overflow-hidden relative ">
+          <div class="overlay bg-custom1-700  bg-opacity-70 p-4 w-full h-full  overflow-y-scroll absolute ">
+
+            <!--=============================================== Recent Invoice ======================================-->
+            <div class="Selectproduct ">
+              <div class="newproduct">
+                <h2 class="text-3xl uppercase text-custom4-400  mb-3 font-bold tracking-widest ">
+                  Dashboard</h2>
+                <!-- old product -->
+                <div class="RecentInvoice">
+                  <h3 class="text-xl text-custom4-400  mb-6 font-medium ">Recent Invoice</h3>
+                  <!-- grid -->
+                  <div class="mb-10 grid grid-cols-1 gap-x-2 gap-y-3 justify-items-stretch">
+                    <div class="  border-white  flex items-center  p-2 rounded-lg justify-between">
+
+                      <p class=" text-custom4-100 font-bold">Invoice ID</p>
+                      <p class=" text-custom4-100 font-bold">Customer</p>
+                      <p class=" text-custom4-100 font-bold">Date</p>
+                      <p class=" text-custom4-100 font-bold">Total</p>
+                      <p class=" text-custom4-100 font-bold">Detail</p>
+                    </div>
+                    <hr>
+                    <div
+                      class=" bg-custom1-500 border-2 border-white  flex items-center  p-2 rounded-lg justify-between">
+                      <div class="flex gap-x-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                          stroke="currentColor" class="w-6 h-6">
+                          <path stroke-linecap="round" stroke-linejoin="round"
+                            d="m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
+                        </svg>
+                        <p class=" text-custom4-300 font-bold">42231</p>
+                      </div>
+                      <p class=" text-custom4-300 font-bold">Ali</p>
+                      <p class=" text-custom4-300 font-bold">12/2/2023</p>
+                      <p class=" text-custom4-300 font-bold">RS 34594</p>
+                      <div onclick="window.location.href='/src/Tabs/Product/producttabModify.html'"
+                        class="rounded-full bg-custom3-600 hover:bg-custom3-700 cursor-pointer py-2 px-3 mr-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                          stroke="currentColor" class="w-6 h-6">
+                          <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </main>
+      <!-- main end -->
+  </div>
+  <!-- ======================================================================================================= -->
+<%-include("footer")-%>

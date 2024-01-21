@@ -1,0 +1,129 @@
+<%-include("../Home/header")-%>
+  <div class="flex ">
+    <%-include("../Home/sidebar")-%>
+
+
+      <!-- main star -->
+      <main class="bg-custom4-700 w-11/12  bg-Pattren2 ">
+        <div id="Customer" class=" w-full h-full   overflow-hidden relative ">
+          <div class="overlay bg-custom1-700  bg-opacity-70 p-4 w-full h-full  overflow-y-scroll absolute ">
+            <!-- content start -->
+
+            <div class="Addcustomer  customerTab" id="customerTab2">
+              <div class="min-h-screen p-6  flex flex-col justify-start bg-Pattern1">
+                <div class="container max-w-screen-lg mx-auto">
+                  <div>
+                    <div class=" rounded   md:p-8 mb-6 ">
+                      <div class="grid gap-2 gap-y-2 text-sm grid-cols-1 ">
+                        <div class="text-white mb-12">
+                          <p class=" text-2xl font-bold">Modify Customer Detail</p>
+                        </div>
+                        <form action="#" method="post">
+                          <div class="lg:col-span-2">
+                            <div class="grid gap-4 gap-y-2 text-black grid-cols-1 md:grid-cols-5">
+                              <div class="md:col-span-5">
+                                <label class="w-32 inline-block text-white font-semibold" for="full_name">Full Name
+                                  <span class="text-red-500  font-semibold">*</span></label>
+                                <input type="text" name="full_name" id="full_name"
+                                  class="h-10 border mt-1 rounded px-4 text-black w-4/5 bg-gray-50" placeholder="Name"
+                                  value="<%=data.customer_Name%>" />
+                              </div>
+                              <div class="md:col-span-5">
+                                <label class="w-32 text-white font-semibold inline-block" for="email">Email </label>
+                                <input type="text" name="email" id="email"
+                                  class="h-10 border mt-1 rounded px-4 w-4/5 bg-gray-50" value="<%=data.Email%>"
+                                  placeholder="email@domain.com" />
+                              </div>
+                              <div class="md:col-span-5">
+                                <label class="w-32 text-white font-semibold inline-block" for="address">Address <span
+                                    class="text-red-500  font-semibold">*</span></label>
+                                <input type="text" name="address" id="address"
+                                  class="h-10 border text-black mt-1 rounded px-4 w-4/5 bg-gray-50"
+                                  value="<%=data.Address%>" placeholder="Address" />
+                              </div>
+                              <div class="md:col-span-5">
+                                <label class="w-32 text-white font-semibold inline-block" for="phoneNumber">Phone Number
+                                  <span class="text-red-500  font-semibold">*</span></label>
+                                <input type="text" name="phoneNumber" id="phoneNumber"
+                                  class="h-10 border text-black mt-1 rounded px-4 w-4/5 bg-gray-50"
+                                  value="<%=data.PhoneNo%>" placeholder="xxxx-xxxxxxx" />
+                              </div>
+                              <div class="md:col-span-5 text-right mt-10">
+                                <div class="inline-flex items-end">
+                                  <button type="button" onclick="newCustomerinfo()"
+                                    class="bg-custom3-500 hover:bg-custom3-700 text-white font-bold py-2 px-4 rounded mt-4">
+                                    Update</button>
+                                </div>
+                                <div class="inline-flex items-end">
+                                  <button type="button" onclick="deleteCustomer()"
+                                    class="bg-red-400  hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-4">
+                                    Delete</button>
+                                </div>
+                                <div class="inline-flex items-end">
+                                  <button type="button"
+                                    onclick="window.location.href = '/Customer/Detail/<%=data.Customer_ID+50%>'"
+                                    class="bg-custom2-500 hover:bg-custom2-700 text-white font-bold py-2 px-4 rounded mt-4">
+                                    Back</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <script>
+              function deleteCustomer() {
+                let flag = confirm("Are you sure you want to delete this customer?");
+                if (flag) {
+                  fetch('/Customer/Detail/Edit/<%=data.Customer_ID+50%>', {
+                    method: 'DELETE'
+                  }).then(response => {
+                    if (!response) {
+                      throw new Error('Network response was not ok');
+                    }
+                    window.location.href = '/Customer';
+                  })
+                    .catch((error) => {
+                      console.error('Error in fetch:', error);
+                    });
+                }
+              }
+
+              function newCustomerinfo() {
+                let data = {
+                  id: '<%=data.Customer_ID+50%>',
+                  name: document.getElementById('full_name').value,
+                  email: document.getElementById('email').value,
+                  address: document.getElementById('address').value,
+                  phoneNo: document.getElementById('phoneNumber').value
+                };
+                fetch('/Customer/Detail/Edit/<%=data.Customer_ID+50%>', {
+                  method: 'put',
+                  body: JSON.stringify(data),
+                  headers: {
+                    'Content-Type': 'application/json'
+                  }
+                }).then(response => {
+                  if (!response) {
+                    throw new Error('Network response was not ok');
+                  }
+                  window.location.href = '/Customer/detail/<%=data.Customer_ID+50%>';
+                })
+                  .catch((error) => {
+                    console.error('Error in fetch:', error);
+                  });
+              }
+            </script>
+            <!-- content end-->
+          </div>
+        </div>
+      </main>
+      <!-- main star -->
+  </div>
+  <!-- ======================================================================================================= -->
+  <%-include("../Home/footer")-%>
