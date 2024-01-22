@@ -3,6 +3,7 @@ import express from 'express';
 const router = express.Router();
 
 router.get('/', invoice.getInvoicetab);
+router.post('/', invoice.addinvoice);
 
 router.get('/invoiceAdd', invoice.getinvoiceform);
 router.get('/:id', invoice.getinvoicedetail);
