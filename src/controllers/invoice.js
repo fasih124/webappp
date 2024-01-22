@@ -1,4 +1,4 @@
-import {InvoiceRecords,addinvoicedata} from "../models/db_invoice.js";
+import {InvoiceRecords,addinvoicedata,InvoiceDetail} from "../models/db_invoice.js";
 import {AllProductsName} from "../models/db_product.js";
 import {AllCustomersName} from "../models/db_customer.js";
 
@@ -13,8 +13,12 @@ export async  function getinvoiceform(req,res){
   res.render("Invoice/invoiceAddTab",{tab:"Invoice", product:ProductsName , customer:CustomersName});
 }
 
-export function getinvoicedetail(req,res){
-  res.render("Invoice/invoiceDetailTab",{tab:"Invoice"});
+export async function getinvoicedetail(req,res){
+  const id = req.params.id;
+  console.log(id);
+   const invoiceDetail= await InvoiceDetail(id);
+   console.log(invoiceDetail);
+  res.render("Invoice/invoiceDetailTab",{tab:"Invoice" ,data:invoiceDetail});
 }
 
 export async function addinvoice(req, res){

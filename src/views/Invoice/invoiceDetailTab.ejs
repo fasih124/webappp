@@ -6,12 +6,87 @@
       <!-- main star -->
       <main class="bg-custom4-700 w-11/12  bg-Pattren2 ">
         <div id="Dashboard" class=" w-full h-full   overflow-hidden relative ">
-          <div class="overlay bg-custom1-700  bg-opacity-70 p-4 w-full h-full  overflow-y-auto absolute ">
+          <div class="overlay bg-custom1-700  bg-opacity-70 p-4 w-full h-full  overflow-y-scroll absolute ">
 
             <!--=============================================== main ======================================-->
+            <div class="flex w-full items-center justify-center text-custom4-500">
+              <div class="w-full py-16 px-20 rounded bg-custom2-300  shadow-lg">
+                <div class="flex flex-col justify-center items-center gap-2">
+                    <h2 class="font-bold border-b">BILLZT CRAFT</h2>
+                    <hr>
+                    <h4 class="font-bold text-3xl text-custom3-300"><%=data[0].Seller_Name%></h4>
+                    <p class="font-semibold text-md mb-8"><%=data[0].Address%></p>
+                </div>
+                <div class="flex flex-col gap-3 border-b border-t  py-6 text-xs">
+                  <p class="flex  text-white   text-lg font-medium justify-between">
+                    <span class="">Customer: </span> <span><%=data[0].customer_Name%></span>
+                </p>
+                  <p class="flex  text-white   text-lg font-medium  justify-between  ">
+                    <span class="">Invoice ID:</span>
+                    <span><%=data[0].Invoice_ID%></span>
+                  </p>
+                  <p class="flex  text-white   text-lg font-medium  justify-between">
+                    <span class="">Order ID:</span>
+                    <span><%=data[0].Order_ID%></span>
+                  </p>
+                  <p class="flex  text-white   text-lg font-medium  justify-between">
+                    <span class="">Dated:</span>
+                    <span id="date"></span>
+                  </p>
+                  <p class="flex  text-white   text-lg font-medium  justify-between">
+                    <span class="">Total Amount:</span>
+                    <span>Rs <%=data[0].Total_Amount%></span>
+                  </p>
+                  
+                  <p class="flex  text-white   text-lg font-medium justify-between">
+                      <span class="">Discount:</span>
+                      <span>Rs <%=data[0].Discount%></span>
+                  </p>
+                  <p class="flex   text-white  text-lg font-medium justify-between">
+                      <span class="">Net Amount:</span>
+                      <span>Rs <%=data[0].Net_Amount%></span>
+                  </p>
+                </div>
+                <div class="flex flex-col gap-3 pb-6 pt-2 text-lg">
+                  <table class="w-full text-left">
+                    <thead>
+                      <tr class="flex">
+                        <th class="w-full py-2">Product</th>
+                        <th class="min-w-[44px] py-2">QTY</th>
+                        <th class="min-w-[44px] py-2">S.Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% if(data.length===0){ %>
+                        <p class="text-custom4-300 font-bold ">No Product Found</p>
+                      <%}else{ %>
+                       <% for(let i=0;i<data.length;i++){  %>
+                      <!-- dynamic product list -->
+                      <tr class="flex">
+                        <td class="flex-1 py-1"><%=data[i].Product_Name%></td>
+                        <td class="min-w-[44px] "><%=data[i].Quantity%></td>
+                        <td class="min-w-[44px]">RS <%=data[i].SubTotal%></td>
+                      </tr>
+                      <% }%>
+                      <% }%>
 
+                    </tbody>
+                  </table>
+                  <div class=" border-b border "></div>
+                
+              </div>
+              </div>
+            </div>
+              
 
-
+            <script>
+              const date = "<%=data[0].Dated %>";
+              document.getElementById("date").innerHTML = date.substring(0, 15);
+            </script>
+          
+          
+          
+  
           </div>
         </div>
       </main>

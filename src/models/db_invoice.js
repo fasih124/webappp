@@ -44,3 +44,21 @@ export async function addinvoicedata(customer_id, product_list ,quantity_list ,p
   console.log("order id + invoice id ",id1,id2);
   console.log("product id  that entered ",id3);
 }
+
+
+export async function getInvoiceDetail(id) {
+  const [rows] = await pool.query(
+    `SELECT *
+    FROM invoice as i
+    INNER JOIN orders as o ON i.Order_ID = o.Order_ID
+    INNER JOIN customer as c ON o.Customer_ID = c.Customer_ID
+    INNER JOIN order_details as od ON o.Order_ID = od.Order_ID
+    INNER JOIN product as p ON  od.Product_ID = p.Product_ID
+    INNER JOIN seller as s ON  p.Seller_ID = s.Seller_ID
+    where Invoice_ID =?;`,[id]
+  );
+  return rows;
+}
+
+export const  InvoiceDetail = await getInvoiceDetail;
+// console.log(InvoiceRecords);

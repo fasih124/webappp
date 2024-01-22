@@ -33,7 +33,7 @@
                     <p class=" text-custom4-100 font-bold">Customer</p>
                     <p class=" text-custom4-100 font-bold">Date</p>
                     <p class=" text-custom4-100 font-bold">Total</p>
-                    <p class=" text-custom4-100 font-bold">Edit/Delete</p>
+                    <p class=" text-custom4-100 font-bold mr-4">View</p>
                   </div>
                   <hr>
                   <script>
@@ -46,7 +46,7 @@
                     <% for(let i=0;i<data.length;i++){  %>
                       <!--single Invoive  start  -->
                       <div class=" bg-custom1-500 border-2 border-white  flex items-center  p-2 rounded-lg justify-between">
-                        <p class=" text-custom4-300 font-bold"><%=data[i].Invoice_ID%></p>
+                        <p class=" text-custom4-300 font-bold w-20"><%=data[i].Invoice_ID%></p>
                         <p class=" text-custom4-300 font-bold"><%=data[i].customer_Name%></p>
                         <p class=" text-custom4-300 font-bold" id="date<%=(i+1)%>" ></p>
                         <script>

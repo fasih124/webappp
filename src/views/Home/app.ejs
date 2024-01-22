@@ -23,31 +23,37 @@
                       <p class=" text-custom4-100 font-bold">Customer</p>
                       <p class=" text-custom4-100 font-bold">Date</p>
                       <p class=" text-custom4-100 font-bold">Total</p>
-                      <p class=" text-custom4-100 font-bold">Detail</p>
+                      <p class=" text-custom4-100 font-bold">view</p>
                     </div>
                     <hr>
-                    <div
-                      class=" bg-custom1-500 border-2 border-white  flex items-center  p-2 rounded-lg justify-between">
-                      <div class="flex gap-x-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                          stroke="currentColor" class="w-6 h-6">
-                          <path stroke-linecap="round" stroke-linejoin="round"
-                            d="m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
-                        </svg>
-                        <p class=" text-custom4-300 font-bold">42231</p>
+                      <!-- dynamic data rendering -->
+                  <% if(data.length===0){ %>
+                    <p class="text-custom4-300 font-bold ">No Invoice Found</p>
+                  <%}else{ %>
+                    <% for(let i=0;i<data.length;i++){  %>
+                      <!--single Invoive  start  -->
+                      <div class=" bg-custom1-500 border-2 border-white  flex items-center  p-2 rounded-lg justify-between">
+                        <p class=" text-custom4-300 font-bold w-20"><%=data[i].Invoice_ID%></p>
+                        <p class=" text-custom4-300 font-bold"><%=data[i].customer_Name%></p>
+                        <p class=" text-custom4-300 font-bold" id="date<%=(i+1)%>" ></p>
+                        <script>
+                          date.push('<%=data[i].Dated%>');
+
+                          
+                          // console.log(old_date.slice(0,15));
+                          document.querySelector('#date<%=(i+1)%>').innerHTML=date['<%=i%>'].slice(0,15);
+                         </script>
+                        <p class=" text-custom4-300 font-bold"><%=data[i].Net_Amount%></p>
+                        <div onclick="window.location.href='/Invoice/<%=data[i].Invoice_ID%>'" class="rounded-full bg-custom3-600 hover:bg-custom3-700 cursor-pointer py-2 px-3 mr-4">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                          </svg>
+                        </div>
                       </div>
-                      <p class=" text-custom4-300 font-bold">Ali</p>
-                      <p class=" text-custom4-300 font-bold">12/2/2023</p>
-                      <p class=" text-custom4-300 font-bold">RS 34594</p>
-                      <div onclick="window.location.href='/src/Tabs/Product/producttabModify.html'"
-                        class="rounded-full bg-custom3-600 hover:bg-custom3-700 cursor-pointer py-2 px-3 mr-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                          stroke="currentColor" class="w-6 h-6">
-                          <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                        </svg>
-                      </div>
-                    </div>
+                     <!-- single customer end start -->
+                     <% }%>
+                     <% }%>
                   </div>
                 </div>
               </div>

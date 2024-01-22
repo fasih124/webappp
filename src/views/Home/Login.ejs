@@ -20,26 +20,39 @@
         <h2 class="text-2xl mb-16 text-custom3-500 uppercase">by Deep Solz</h2>
     </div>
     <form action="" class="3  w-full lg:w-1/2 p-10 mx-auto text-center">
-        <input class="mb-4 rounded-md p-2 w-2/3 text-custom2" type="text" name="username" id="username"
+        <input class="mb-4 rounded-md p-2 w-2/3 text-custom2-500" type="text" name="username" id="username"
             placeholder="Username">
         <br>
-        <input class="mb-4 rounded-md p-2  w-2/3 text-custom2   " type="password" name="password" id="password"
+        <input class="mb-4 rounded-md p-2  w-2/3 text-custom2-500   " type="password" name="password" id="password"
             placeholder="Password">
         <br>
-        <a href="app.html">
-            <button class="bg-custom3-500 text-custom4 py-2 px-16 mb-4 rounded-xl w-2/3 hover:bg-custom3-700"
+    
+            <button type="submit" class="bg-custom3-500 text-custom4 py-2 px-16 mb-4 rounded-xl w-2/3 hover:bg-custom3-700"
                 type="button">Login</button>
             <br>
-            <a href="" class="text-custom3-500 hover:underline hover:text-custom3-300">Forget Password</a>
-        </a>
+            <!-- <a href="" class="text-custom3-500 hover:underline hover:text-custom3-300">Forget Password</a> -->
+    
     </form>
-    <div class="text-center">
+    <!-- <div class="text-center">
         <a href="signup.html">Don't have an account? <span
                 class="text-custom3-500 hover:underline hover:text-custom3-300">Sign up here</span></a>
         <br>
-    </div>
+    </div> -->
 </body>
 
+<script>
+    const username = document.getElementById('username');
+    const password = document.getElementById('password');
+    const form = document.querySelector('form');
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (username.value.toLowerCase() === '<%=data.Seller_Name%>'.toLowerCase() && password.value === '<%=data.password%>') {
+            window.location.href = 'app.html';
+        } else {
+            alert('Wrong username or password');
+        }
+    })
+</script>
 
 
 </html>
